@@ -1,5 +1,5 @@
 # BMCo-O
-Code Smell Detection Based on Metrics and Code Smell Co-occurrences  
+Code Smell Detection Method Based on Metrics and Code Smell Co-occurrences  
 
 Including expetimental data and result. Tips:  
 
