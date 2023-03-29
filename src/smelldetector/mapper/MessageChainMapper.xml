@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace = "smelldetector.mapper.MessageChainMapper">
+	<insert id="insertMessageChain" parameterType="smelldetector.pojo.MessageChain">
+		insert
+		into messagechain
+		(projectName, className, methodName, mcc, possibility)
+		values
+		(#{projectName}, #{className}, #{methodName}, #{mcc}, #{possibility})
+	</insert>
+	
+	<select id="findMessageChainList" parameterType="java.util.Map" resultType="smelldetector.pojo.MessageChain">
+		select * from messagechain where projectName= #{projectName};
+	</select>
+	
+	<select id="findMessageChain" parameterType="java.util.Map" resultType="smelldetector.pojo.MessageChain">
+		select * from messagechain;
+	</select>
+</mapper>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace = "smelldetector.mapper.ComplexClassMapper">
+	<insert id="insertComplexClass" parameterType="smelldetector.pojo.ComplexClass">
+		insert
+		into complexclass
+		(projectName, className, wmc, possibility)
+		values
+		(#{projectName}, #{className}, #{wmc}, #{possibility})
+	</insert>
+</mapper>
