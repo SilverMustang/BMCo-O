@@ -14,7 +14,7 @@ Code Smell Detection Method Based on Metrics and Code Smell Co-occurrences
 ***MMVAlgorithmSet***: Algorithms for metrics values and mean values in an application project  
 ***MBVecSet***: Set of Metric boundary vector values  
 ***CSWDG***: Weighted-directed graph of co-occurrence dependency among code smells  
-***Num_inEwt(CS_j)***: sum Weight value of in-edges of CS_j  
+***$$Num_inEwt(CS_{j})$$***: sum Weight value of in-edges of CS_j  
 ***PriSet***: Detection priority set of all kinds of code smells  
 ***F_CS Set***: Initial state set of Code-smell-co-occurrence impactor factor set  
 ***R_F_CS Set***: realtime state set of Code-smell-co-occurrence impactor factor set  
