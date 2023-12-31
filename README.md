@@ -1,5 +1,5 @@
 # BMCo-O
-Code Smell Detection Method Based on Metrics and Code Smell Co-occurrences 
+Code Smell Detection Method Based on Metrics and Code Smell Co-occurrences.
 
 ## 1.Description of some parameters  
 ***CSDSet***: Code Smell dataset;     
@@ -26,9 +26,9 @@ Code Smell Detection Method Based on Metrics and Code Smell Co-occurrences
 
 ***CSWDG***: Weighted-directed graph of co-occurrence dependency among code smells;    
 
-***Num_inEwt(CS<sub>j</sub>)***: sum Weight value of in-edges of $CS_{j}$;  *  
+***Num_inEwt(CS<sub>j</sub>)***: sum Weight value of in-edges of $CS_{j}$;  
 
-**PriSet***: Detection priority set of all kinds of code smells;    
+***PriSet***: Detection priority set of all kinds of code smells;    
 
 ***f<sub>CS</sub>Set***: Initial state set of Code-smell-co-occurrence impactor factor set;    
 
