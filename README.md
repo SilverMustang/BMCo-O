@@ -4,7 +4,7 @@ Code Smell Detection Method Based on Metrics and Code Smell Co-occurrences
 ## 1.Description of some parameters  
 ***CSDSet***: Code Smell dataset;  
 ***CSTSet***: Code Smell type set;  
-***$f_{{CS}}$Set***: Set of code-smell-co-occurrence impact factor;  
+***f<sub>CS</sub>Set***: Set of code-smell-co-occurrence impact factor;  
 ***project***: ASTs of the application;  
 ***CSdeted***: A detected code smell;  
 ***CSdetedSet***: Set of detected code smell;  
@@ -14,7 +14,7 @@ Code Smell Detection Method Based on Metrics and Code Smell Co-occurrences
 ***MMVAlgorithmSet***: Algorithms for metrics values and mean values in an application project;  
 ***MBVecSet***: Set of Metric boundary vector values;  
 ***CSWDG***: Weighted-directed graph of co-occurrence dependency among code smells;  
-***Num_inEwt($CS_{{j{}}$)***: sum Weight value of in-edges of $CS_{j}$;  
+***Num_inEwt(CS<sub>j</sub>)***: sum Weight value of in-edges of $CS_{j}$;  
 ***PriSet***: Detection priority set of all kinds of code smells;  
 ***$f_{{CS}$Set***: Initial state set of Code-smell-co-occurrence impactor factor set;  
 $R_{F_{CS}}$Set : realtime state set of Code-smell-co-occurrence impactor factor set; 
