@@ -2,26 +2,46 @@
 Code Smell Detection Method Based on Metrics and Code Smell Co-occurrences 
 
 ## 1.Description of some parameters  
-***CSDSet***: Code Smell dataset;  
-***CSTSet***: Code Smell type set;  
-***f<sub>CS</sub>Set***: Set of code-smell-co-occurrence impact factor;  
-***project***: ASTs of the application;  
-***CSdeted***: A detected code smell;  
-***CSdetedSet***: Set of detected code smell;  
-***CSdetQue***: Queue of code smells to be detected;  
-***MetricSet***: A set of metrics to characterize code smells;  
-***PrefilterRuleSet***: Set of rules to pre-filtering code smells;  
-***MMVAlgorithmSet***: Algorithms for metrics values and mean values in an application project;  
-***MBVecSet***: Set of Metric boundary vector values;  
-***CSWDG***: Weighted-directed graph of co-occurrence dependency among code smells;  
-***Num_inEwt(CS<sub>j</sub>)***: sum Weight value of in-edges of $CS_{j}$;  
-***PriSet***: Detection priority set of all kinds of code smells;  
-***f<sub>CS</sub>Set***: Initial state set of Code-smell-co-occurrence impactor factor set;  
- ***R<sub>F</sub><sub>CS</sub>Set***: realtime state set of Code-smell-co-occurrence impactor factor set; 
-***Flag_fin***: a finish flag is true if the detection task of a project is completed;  
-***pool***: a detection pool;  
-***Par_CS***: Code smell parameter;  
-***Par_metrics***: Metrics parameter of a code smell;  
+***CSDSet***: Code Smell dataset;     
+
+***CSTSet***: Code Smell type set;    
+
+***f<sub>CS</sub>Set***: Set of code-smell-co-occurrence impact factor;    
+
+***project***: ASTs of the application;    
+
+***CSdeted***: A detected code smell;    
+
+***CSdetedSet***: Set of detected code smell;    
+
+***CSdetQue***: Queue of code smells to be detected;    
+
+***MetricSet***: A set of metrics to characterize code smells;    
+
+***PrefilterRuleSet***: Set of rules to pre-filtering code smells;    
+
+***MMVAlgorithmSet***: Algorithms for metrics values and mean values in an application project;    
+
+***MBVecSet***: Set of Metric boundary vector values;    
+
+***CSWDG***: Weighted-directed graph of co-occurrence dependency among code smells;    
+
+***Num_inEwt(CS<sub>j</sub>)***: sum Weight value of in-edges of $CS_{j}$;  *  
+
+**PriSet***: Detection priority set of all kinds of code smells;    
+
+***f<sub>CS</sub>Set***: Initial state set of Code-smell-co-occurrence impactor factor set;    
+
+***R<sub>F<sub>CS</sub></sub>Set***: realtime state set of Code-smell-co-occurrence impactor factor set;   
+
+***Flag_fin***: a finish flag is true if the detection task of a project is completed;    
+
+***pool***: a detection pool;    
+
+***Par_CS***: Code smell parameter;    
+
+***Par_metrics***: Metrics parameter of a code smell;    
+
 ***DPV***: Vector of the selected detection parameters;  
 
 ## 2.Metrics used in BMCo-O  
