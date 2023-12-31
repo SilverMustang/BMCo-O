@@ -128,7 +128,7 @@ Before running the code, make sure you have the following prerequisites:
 - clone source code
 
   ```
-  git clone https://github.com/sjj0403/GSCS.git
+  git clone https://github.com/SilverMustang/BMCo-O.git
   ```
 
 ### （3)***Setup***
