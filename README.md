@@ -116,6 +116,39 @@ In BMCo-O, **Code smell data set** now verifiably uses the Palomba dataset. Beca
 
 ## 5.Run the code
 
+### （1)***Prerequisites***
+
+Before running the code, make sure you have the following prerequisites:
+
+- Java Development Kit (JDK)
+- MySQL database
+
+### （2)***get source code***
+
+- clone source code
+
+  ```
+  git clone https://github.com/sjj0403/GSCS.git
+  ```
+
+### （3)***Setup***
+
+1)Import the `smelldetector.sql` file into your MySQL database. 
+
+2)Open the project in your preferred Java IDE. 
+
+3)Run the `MainFrame.java` file located at `src/smelldetector/ui/frame/`.
+
+### （4)***Usage***
+
+1)Launch the UI by executing `MainFrame.java`.   
+
+2)In the UI, select the source code project you want to analyze.   
+
+3)Click the "Detect" button to initiate the code smell detection process. 
+
+4)View the results displayed on the UI.
+
 It is composed of the source code of BMCo-O, as well as the data for the evaluation. Tips:
 
 1.baseline_1 is the original data
