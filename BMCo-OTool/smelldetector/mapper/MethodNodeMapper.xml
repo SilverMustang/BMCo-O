@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="smelldetector.mapper.MethodNodeMapper" >
+	<insert id="insertMethodNode" keyProperty="id" useGeneratedKeys="true" parameterType="smelldetector.pojo.MethodNode">
+ 		insert 
+		into methodnode 
+		(className,methodName,methodType,arguementCount,parameter,nos,returnType,classNodeId,type,projectName,isJavadoc,methodLine)
+		values
+		(#{className},#{methodName},#{methodType},#{arguementCount},#{parameter},#{nos},#{returnType},#{classNodeId},#{type},#{projectName},#{isJavadoc},#{methodLine})
+
+  	</insert> 
+  	
+  	<select id="findMethodNodeList" parameterType="java.util.Map" resultType="smelldetector.pojo.MethodNode">
+  		select * from methodnode where classNodeId = #{classNodeId}	
+  		<if test ="methodName != null and methodName !='' ">
+  		and methodName = #{methodName}
+  		</if>
+  		<if test ="methodType != null and methodType > 0 ">
+  		and methodType = #{methodType}
+  		</if>
+  		<if test ="returnType != null and returnType !='' ">
+  		and returnType = #{returnType}
+  		</if>
+  		<if test ="arguementCount != null and arguementCount > 0 ">
+  		and arguementCount = #{arguementCount}
+  		</if>
+  		order by id;
+ 	 </select>
+ 	 
+   	<select id="findMethodNodeListByType" parameterType="java.util.Map" resultType="smelldetector.pojo.MethodNode">
+  		select * from methodnode where classNodeId = #{classNodeId}	
+  		<if test ="methodName != null and methodName !='' ">
+  		and methodName = #{methodName}
+  		</if>
+  		and methodType = 4
+  		and returnType = 'Object'
+  		and type = 2
+  		<if test ="arguementCount != null and arguementCount > 0 ">
+  		and arguementCount = #{arguementCount}
+  		</if>
+  		order by id;
+  	</select>	
+  	
+  	<select id="findMethodNodeById" parameterType="java.util.Map" resultType="smelldetector.pojo.MethodNode">
+  		select * from methodnode where id = #{id};
+  	</select>	
+	
+	<select id="findMethodNodeByProjectName" parameterType="java.util.Map" resultType="smelldetector.pojo.MethodNode">
+  		select * from methodnode where projectName= #{projectName};		
+  	</select>  
+  	
+	<select id="findAllMethodNode" parameterType="java.util.Map" resultType="smelldetector.pojo.MethodNode">
+  		select * from methodnode 
+  	</select>
+  	
+  	<delete id="deleteMethodLinkByClassNodeId" parameterType="java.util.Map">
+		delete 
+		from methodnode
+		where classNodeId = #{classNodeId} 	
+  	</delete>
+  	
+  	<select id="fuzzyFindMethodNode" resultType = "smelldetector.pojo.MethodNode">
+  		select *
+  		from methodnode
+  		where projectName like concat('%',#{projectName},'%')
+  	</select>
+</mapper>
