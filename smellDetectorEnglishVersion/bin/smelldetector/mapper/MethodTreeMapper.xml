@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace = "smelldetector.mapper.MethodTreeMapper">
+	<insert id="insertMethodTree" parameterType="smelldetector.pojo.MethodTree">
+		insert
+		into methodtree
+		(projectName, className, methodName, treeDepth, treeWidth, nodeSum, maxChildren, mloc, nop, nos, nogv, mcn, atfd, isLM, isMC, isFE)
+		values
+		(#{projectName}, #{className}, #{methodName}, #{treeDepth}, #{treeWidth}, #{nodeSum}, #{maxChildren}, #{mloc}, #{nop}, #{nos}, #{nogv}, #{mcn}, #{atfd}, #{isLM}, #{isMC}, #{isFE})
+	</insert>
+	
+	<select id="findAllMethodTree" resultType="smelldetector.pojo.MethodTree">
+		select * from methodtree
+	</select>
+	
+	<select id="findMethodTreeList" parameterType="java.util.Map" resultType="smelldetector.pojo.MethodTree">
+		select * from methodtree where projectName = #{projectName}
+	</select>
+	
+	<update id="updateIsLM" parameterType="smelldetector.pojo.MethodTree">
+		update 
+			methodTree
+		set 
+			isLM = #{isLM}
+		where
+			id = #{id}
+	</update>
+	
+	<update id="updateIsMC" parameterType="smelldetector.pojo.MethodTree">
+		update 
+			methodTree
+		set 
+			isMC = #{isMC}
+		where
+			id = #{id}
+	</update>
+	
+	<update id="updateIsFE" parameterType="smelldetector.pojo.MethodTree">
+		update 
+			methodTree
+		set 
+			isFE = #{isFE}
+		where
+			id = #{id}
+	</update>
+	
+	<select id="findMethodTreeById" resultType="smelldetector.pojo.MethodTree">
+		select * from methodtree where id = #{id}
+	</select>
+</mapper>

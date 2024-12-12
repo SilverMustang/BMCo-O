@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="smelldetector.mapper.NodeMapper" >
+  <insert id="insertNode" keyProperty="id" useGeneratedKeys="true" parameterType="smelldetector.pojo.Node">
+  		insert 
+		into node 
+		(name,nodeType,packageName,projectName)
+		values
+		(#{name},#{nodeType},#{packageName},#{projectName})
+  </insert> 
+  
+  <insert id="insertMethodNode" keyProperty="id" useGeneratedKeys="true" parameterType="smelldetector.pojo.Node">
+  		insert 
+		into node 
+		(name,nodeType,projectName,methodName,methodType,arguementCount,parameter,returnType)
+		values
+		(#{name},#{nodeType},#{projectName},#{methodName},#{methodType},#{arguementCount},#{parameter},#{returnType})
+  </insert>
+  
+  <select id="findNodeList" parameterType="java.util.Map" resultType="smelldetector.pojo.Node">
+  		select * from node where projectName = #{projectName}
+  		<if test ="nodeType != null and nodeType > 0">
+  		and nodeType = #{nodeType}
+  		</if>	
+  		<if test ="methodName != null and methodName !='' ">
+  		and methodName = #{methodName}
+  		</if>
+  		<if test ="methodType != null and methodType > 0 ">
+  		and methodType = #{methodType}
+  		</if>
+  		<if test ="returnType != null and returnType !='' ">
+  		and returnType = #{returnType}
+  		</if>
+  		<if test ="arguementCount != null and arguementCount > 0 ">
+  		and arguementCount = #{arguementCount}
+  		</if>
+  		<if test ="name != null and name != '' ">
+  		and name = #{name}
+  		</if>
+  		<if test ="noName != null and noName.size > 0">
+  			and name not in
+  			<foreach item="item" index="index" collection="noName" open="(" separator="," close=")">  
+		      #{item}  
+		    </foreach>  
+  		</if>
+  		order by id;
+  </select>
+   
+  <select id="findNodeById" parameterType="java.util.Map" resultType="smelldetector.pojo.Node">
+  		select * from node where id = #{id} 		
+  </select> 
+    
+  <select id="findNodeMessageList" parameterType="java.util.Map" resultType="smelldetector.pojo.Node">
+  		select * from node where projectName = #{projectName} 		
+  </select>  
+  
+  <select id="findAllNode" parameterType="java.util.Map" resultType="smelldetector.pojo.Node">
+  		select * from node 		
+  </select>  
+   
+  <insert id="insertNodeBackups" parameterType="smelldetector.pojo.Node">
+  		<if test = "nodeType != null and nodeType == 1">
+	  		insert 
+			into nodebackups 
+			(name,nodeType,packageName,projectName)
+			values
+			(#{name},#{nodeType},#{packageName},#{projectName})
+  		</if>
+  		<if test = "nodeType != null and nodeType == 2">
+	  		insert 
+			into nodebackups 
+			(name,nodeType,projectName,methodName,methodType,arguementCount,parameter,returnType)
+			values
+			(#{name},#{nodeType},#{projectName},#{methodName},#{methodType},#{arguementCount},#{parameter},#{returnType})
+  		</if>
+  </insert>  
+   
+  <delete id="deleteNodeByProjectName" parameterType="java.util.Map">
+		delete 
+		from node
+		where projectName = #{projectName} 	
+  </delete>  
+    
+  <select id="fuzzyFindNode" resultType = "smelldetector.pojo.Node">
+  	select *
+  	from node
+  	where projectName like concat('%',#{projectName},'%')
+  </select>
+</mapper>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace = "smelldetector.mapper.LargeClassMapper">
+	<insert id="insertLargeClass" parameterType="smelldetector.pojo.LargeClass">
+		insert 
+		into largeclass
+		(projectName, className, col, nof, nom, treeDepth, treeWidth, nodeSum, maxChildren, possibility)
+		values
+		(#{projectName}, #{className}, #{col}, #{nof}, #{nom}, #{treeDepth}, #{treeWidth}, #{nodeSum}, #{maxChildren}, #{possibility})
+	</insert>
+	
+	<select id="findLargeClassList"  parameterType="java.util.Map" resultType="smelldetector.pojo.LargeClass">
+		select * from largeclass where  projectName= #{projectName};
+	</select>
+	
+	<select id="findLargeClass" parameterType="java.util.Map" resultType="smelldetector.pojo.LargeClass">
+		select * from largeclass;
+	</select>
+
+</mapper>

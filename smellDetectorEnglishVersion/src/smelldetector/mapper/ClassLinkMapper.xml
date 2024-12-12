@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="smelldetector.mapper.ClassLinkMapper" >
+  <insert id="insertLink" parameterType="smelldetector.pojo.ClassLink">
+  		insert 
+		into classlink 
+		(source,target,linkType,projectName,linkName)
+		values
+		(#{source},#{target},#{linkType},#{projectName},#{linkName})
+  </insert> 
+  
+  <select id="findLinkList" parameterType="java.util.Map" resultType="smelldetector.pojo.ClassLink">
+  		select * from classlink where projectName = #{projectName}
+  		
+  </select>
+  
+  <select id="findLink" parameterType="java.util.Map" resultType="smelldetector.pojo.ClassLink">
+  		select * from classlink where projectName = #{projectName}
+  		<if test ="linkType != null">
+  			and linkType = #{linkType}  			
+  		</if>
+  		<if test ="source != null">
+  			and source = #{source}  			
+  		</if>
+  		<if test ="target != null">
+  			and target = #{target}  			
+  		</if>
+  		
+  </select>
+  
+  <select id="findAllClassLink" parameterType="java.util.Map" resultType="smelldetector.pojo.ClassLink">
+  		select * from classlink 	
+  </select>  
+  
+  <insert id="insertLinkBackups" parameterType="smelldetector.pojo.ClassLink">
+  		insert 
+		into linkbackups 
+		(source,target,linkType,projectName,linkName)
+		values
+		(#{source},#{target},#{linkType},#{projectName},#{linkName})
+  </insert> 
+  <delete id="deleteLinkByProjectName" parameterType="java.util.Map">
+		delete 
+		from classlink
+		where projectName = #{projectName} 	
+  </delete> 
+  
+  <select id="fuzzyFindClassLink" resultType = "smelldetector.pojo.ClassLink">
+  	select *
+  	from classlink
+  	where projectName like concat('%',#{projectName},'%')
+  </select> 
+</mapper>

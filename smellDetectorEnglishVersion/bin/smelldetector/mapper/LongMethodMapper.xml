@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace = "smelldetector.mapper.LongMethodMapper">
+	<insert id="insertLongMethod" parameterType="smelldetector.pojo.LongMethod">
+		insert 
+		into longmethod
+		(projectName, className, methodName, mloc, nop, nos, treeDepth, treeWidth, nodeSum, maxChildren, possibility)
+		values
+		(#{projectName}, #{className}, #{methodName}, #{mloc}, #{nop}, #{nos}, #{treeDepth}, #{treeWidth}, #{nodeSum}, #{maxChildren}, #{possibility})
+	</insert>
+	
+	<select id="findLongMethodList"  parameterType="java.util.Map" resultType="smelldetector.pojo.LongMethod">
+		select * from longmethod where projectName= #{projectName};
+	</select>
+
+</mapper>

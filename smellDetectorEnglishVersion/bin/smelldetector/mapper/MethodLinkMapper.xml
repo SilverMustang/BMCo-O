@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="smelldetector.mapper.MethodLinkMapper" >
+  <insert id="insertMethodLink" keyProperty="id" useGeneratedKeys="true" parameterType="smelldetector.pojo.MethodLink">
+  		insert 
+		into methodlink 
+		(source,target,projectName,linkType,timeCount,mcc)
+		values
+		(#{source},#{target},#{projectName},#{linkType},#{timeCount},#{mcc})
+  </insert> 
+  
+  <select id="findMethodLink" parameterType="java.util.Map" resultType="smelldetector.pojo.MethodLink">
+  		select * from methodlink where source = #{source} and target= #{target};		
+  </select>
+  
+  <select id="findMethodLinkListBySource" parameterType="java.util.Map" resultType="smelldetector.pojo.MethodLink">
+  		select * from methodlink where source = #{source};	
+  </select>
+  
+  <select id="findAllMethodLink" parameterType="java.util.Map" resultType="smelldetector.pojo.MethodLink">
+  		select * from methodlink
+  </select>
+  
+  <delete id="deleteMethodLinkByProjectName" parameterType="java.util.Map">
+		delete 
+		from methodlink
+		where projectName = #{projectName} 	
+  </delete>
+    
+  <select id="fuzzyFindMethodLink" resultType = "smelldetector.pojo.MethodLink">
+  	select *
+  	from methodlink
+  	where projectName like concat('%',#{projectName},'%')
+  </select>
+  
+  <select id="findMethodLinkList" parameterType="java.util.Map" resultType="smelldetector.pojo.MethodLink">
+	select * from methodlink where projectName = #{projectName} 
+  </select>
+  
+  <select id="findMethodLinkByTargetId"  resultType="smelldetector.pojo.MethodLink">
+  		select * from methodlink where source = #{targetId} and projectName = #{projectName}	
+  </select>
+  
+  <update id="updateMCC" parameterType="smelldetector.pojo.MethodLink">
+	update 
+		methodlink
+	set 
+		mcc = #{mcc}
+	where
+		id = #{id}
+  </update>
+</mapper>

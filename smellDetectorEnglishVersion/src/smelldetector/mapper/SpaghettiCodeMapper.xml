@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace = "smelldetector.mapper.SpaghettiCodeMapper">
+	<insert id="insertSpaghettiCode" parameterType="smelldetector.pojo.SpaghettiCode">
+		insert
+		into spaghetticode
+		(projectName, className, nmnoparam, loc, nogv, possibility)
+		values
+		(#{projectName}, #{className}, #{NMNOPARAM}, #{LOC}, #{NOGV}, #{possibility})
+	</insert>
+</mapper>

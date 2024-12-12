@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="smelldetector.mapper.ClassNodeMapper" >
+	<insert id="insertClassNode" keyProperty="id" useGeneratedKeys="true" parameterType="smelldetector.pojo.ClassNode">
+		insert
+		into classnode
+		(projectName,packageName,className,type,isJavadoc,author,since,version,loc,NMNOPARAM,wmc,norm,superType,isLC,isSC,isCC,isRB,nprom,bur,nom,nof)
+		values
+		(#{projectName},#{packageName},#{className},#{type},#{isJavadoc},#{author},#{since},#{version},#{loc},#{NMNOPARAM},#{wmc},#{norm},#{superType},#{isLC},#{isSC},#{isCC},#{isRB},#{nprom},#{bur},#{nom},#{nof})
+	</insert>
+	
+	<select id="findClassNodeIdByClassName" parameterType="java.util.Map" resultType="java.lang.Integer">
+  		select  id from classnode where className = #{className} and projectName= #{projectName} ORDER BY id DESC LIMIT 1;		
+ 	</select>
+  
+ 	<select id="findClassNodeIdByClassNameAndType" parameterType="java.util.Map" resultType="java.lang.Integer">
+  		select id from classnode where className = #{className} and projectName = 'public' and type = 2;		
+ 	</select>
+  
+ 	<select id="findClassNodeIds" parameterType="java.util.Map" resultType="java.lang.Integer">
+  		select id from classnode where  projectName= #{projectName};		
+  	</select>
+  
+  	<select id="findClassName" parameterType="java.util.Map" resultType="java.lang.String">
+  		select className from classnode where  id= #{id};		
+  	</select>
+    
+  	<select id="findClassNodeList" parameterType="java.util.Map" resultType="smelldetector.pojo.ClassNode">
+  		select * from classnode where  projectName= #{projectName};		
+  	</select>  
+  
+    <select id="findAllClassNode" parameterType="java.util.Map" resultType="smelldetector.pojo.ClassNode">
+  		select * from classnode
+  	</select>  
+  
+  	<delete id="deleteClassNodeByProjectName" parameterType="java.util.Map">
+		delete 
+		from classnode
+		where projectName = #{projectName} 	
+  	</delete>
+  	
+  	<select id="fuzzyFindClassNode" resultType = "smelldetector.pojo.ClassNode">
+  		select *
+  		from classnode
+  		where projectName like concat('%',#{projectName},'%')
+  	</select>
+  		
+  	<update id="updateIsLC" parameterType="smelldetector.pojo.ClassNode">
+  		update 
+  			classnode
+  		set 
+  			isLC = #{isLC}
+  		where
+  			id = #{id}
+  	</update>
+  	
+  	<update id="updateIsSC" parameterType="smelldetector.pojo.ClassNode">
+  		update 
+  			classnode
+  		set 
+  			isSC = #{isSC}
+  		where
+  			id = #{id}
+  	</update>
+  	
+  	<update id="updateIsCC" parameterType="smelldetector.pojo.ClassNode">
+  		update 
+  			classnode
+  		set 
+  			isCC = #{isCC}
+  		where
+  			id = #{id}
+  	</update>
+  	
+  	<update id="updateIsRB" parameterType="smelldetector.pojo.ClassNode">
+  		update 
+  			classnode
+  		set 
+  			isRB = #{isRB}
+  		where
+  			id = #{id}
+  	</update>
+  	
+</mapper>

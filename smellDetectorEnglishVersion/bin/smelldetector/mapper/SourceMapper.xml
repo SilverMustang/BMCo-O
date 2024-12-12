@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="smelldetector.mapper.SourceMapper" >
+  <insert id="insertSource" parameterType="smelldetector.pojo.Source">
+		insert 
+		into source 
+		(names,methods,methodNames,methodSum,fields,fieldSum,importClassMap,superClassName,interfaceName,projectName,dateCreateTime,dateChangeLastTime,lineSum)
+		values
+		(#{names},#{methods},#{methodNames},#{methodSum},#{fields},#{fieldSum},#{importClassMap},
+		#{superClassName},#{interfaceName},#{projectName},#{dateCreateTime},#{dateChangeLastTime},#{lineSum})
+  </insert>
+  
+  <select id="findSourceList" parameterType="java.util.Map" resultType="smelldetector.pojo.Source">
+  		select methods,projectName,fields,methodNames,superClassName,importClassMap,interfaceName,names,dateCreateTime from Source where projectName = #{projectName}
+  </select>
+  
+  <select id="findSourceMessageList" parameterType="java.util.Map" resultType="smelldetector.pojo.Source">
+  		select * from Source where projectName = #{projectName}
+  </select>
+  
+  <select id="findAllSource" parameterType="java.util.Map" resultType="smelldetector.pojo.Source">
+  		select * from Source 
+  </select>
+  
+  <select id="findSourceByClassName" parameterType="java.util.Map" resultType="smelldetector.pojo.Source">
+  		select fields,methods,names,superClassName,interfaceName,importClassMap from Source where names = #{className}
+  		<if test="projectName != null and projectName != ''">
+  			and projectName = #{projectName}
+  		</if>
+  </select>
+  
+  <insert id="insertSourceBackups" parameterType="smelldetector.pojo.Source">
+		insert 
+		into sourcebackups
+		(names,methods,methodNames,methodSum,fields,importClassMap,superClassName,interfaceName,projectName,dateCreateTime,dateChangeLastTime)
+		values
+		(#{names},#{methods},#{methodNames},#{methodSum},#{fields},#{importClassMap},
+		#{superClassName},#{interfaceName},#{projectName},#{dateCreateTime},#{dateChangeLastTime})
+  </insert>
+  
+  <delete id="deleteSourceById" parameterType="smelldetector.pojo.Source">
+		delete 
+		from source
+		where id = #{id} 	
+  </delete>
+  
+  <delete id="deleteSourceByProjectName" parameterType="java.util.Map">
+		delete 
+		from source
+		where projectName = #{projectName} 	
+  </delete>
+  
+  <select id="fuzzyFindSource" resultType="smelldetector.pojo.Source">
+  		select *
+  		from source
+  		where projectName like concat('%',#{projectName},'%')
+  </select>
+</mapper>
